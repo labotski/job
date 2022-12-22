@@ -1,9 +1,15 @@
-package com.job.app;
+package com.job;
 
+import com.job.app.ExecutionType;
+import com.job.app.Job;
+import com.job.app.JobType;
 import com.job.exceptions.DuplicateFoundException;
 import com.job.jobs.CheckCancelJob;
 import com.job.jobs.CheckLifeCycleJob;
 import com.job.jobs.Task;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,10 +20,11 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 
+@SpringBootApplication
 public class App {
 
     public static void main(String[] args) throws DuplicateFoundException {
-
+        SpringApplication.run(App.class, args);
         Job job = new Job();
 
         Task task1 = new Task(1, JobType.JOB_TYPE_FIRST, ExecutionType.IMMEDIATELY, new Runnable() {

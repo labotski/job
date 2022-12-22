@@ -3,6 +3,9 @@ package com.job.app;
 
 import com.job.exceptions.DuplicateFoundException;
 import com.job.jobs.Task;
+import com.job.repository.JobRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -15,7 +18,11 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
+@Service
 public class Job {
+
+    @Autowired
+    JobRepository jobRepository; // we can use data layer in future if we need
 
     public static final int POOL = 3; // pool size
 
